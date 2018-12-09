@@ -135,11 +135,7 @@ TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8917
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Lineage Hardware
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
-
 # Tap2Wake
-
 TARGET_TAP_TO_WAKE_NODE := "/proc/gesture/onoff"
 
 # Malloc

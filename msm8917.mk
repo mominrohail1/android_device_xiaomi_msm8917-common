@@ -19,8 +19,7 @@ VENDOR_PATH := device/xiaomi/msm8917-common
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(VENDOR_PATH)/overlay \
-    $(VENDOR_PATH)/overlay-lineage
+    $(VENDOR_PATH)/overlay
 
 # Properties
 -include $(VENDOR_PATH)/vendor_prop.mk
