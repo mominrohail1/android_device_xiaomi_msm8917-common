@@ -22,6 +22,9 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(VENDOR_PATH)/overlay \
     $(VENDOR_PATH)/overlay-lineage
 
+# Boot animation
+TARGET_BOOTANIMATION_HALF_RES := true
+
 # Properties
 -include $(VENDOR_PATH)/vendor_prop.mk
 
