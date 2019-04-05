@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013,2015-2017, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2012-2013,2015-2018, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -41,7 +41,7 @@
 #include "power-common.h"
 
 #define LOG_TAG "QTI PowerHAL"
-#include <utils/Log.h>
+#include <log/log.h>
 
 char scaling_gov_path[4][80] ={
     "sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
@@ -221,7 +221,7 @@ void interaction(int duration, int num_args, int opt_list[])
         if (perf_lock_acq) {
             lock_handle = perf_lock_acq(lock_handle, duration, opt_list, num_args);
             if (lock_handle == -1)
-                ALOGE("Failed to acquire lock.");
+                ALOGV("Failed to acquire lock.");
         }
     }
 #endif
@@ -236,7 +236,7 @@ int interaction_with_handle(int lock_handle, int duration, int num_args, int opt
         if (perf_lock_acq) {
             lock_handle = perf_lock_acq(lock_handle, duration, opt_list, num_args);
             if (lock_handle == -1)
-                ALOGE("Failed to acquire lock.");
+                ALOGV("Failed to acquire lock.");
         }
     }
     return lock_handle;
@@ -255,7 +255,7 @@ int perf_hint_enable(int hint_id , int duration)
         if (perf_hint) {
             lock_handle = perf_hint(hint_id, NULL, duration, -1);
             if (lock_handle == -1)
-                ALOGE("Failed to acquire lock.");
+                ALOGV("Failed to acquire lock for hint_id: %X.", hint_id);
         }
     }
     return lock_handle;
@@ -276,7 +276,7 @@ void perform_hint_action(int hint_id, int resource_values[], int num_resources)
                     num_resources);
 
             if (lock_handle == -1) {
-                ALOGE("Failed to acquire lock.");
+                ALOGV("Failed to acquire lock.");
             } else {
                 /* Add this handle to our internal hint-list. */
                 struct hint_data *new_hint =
